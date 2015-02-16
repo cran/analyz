@@ -54,7 +54,7 @@ setMethod( f="initialize",
 #' Method for reading the analysis file and fill the "steps" class spot.
 #'
 #' @param object Object instance.
-#' @param path Path for the analysis file.
+#' @param path Path and analysis file name.
 #' @return object Object instance.
 #' 
 #' @export
@@ -78,7 +78,6 @@ setMethod("Analyz.loadSteps",
     # -- Constants   
     HEADER  <- FALSE
     FACTORS <- FALSE
-#   ROWNMS  <- 1
     # -- BODY
     vSteps   <- NULL
 
@@ -152,7 +151,7 @@ setMethod("Analyz.getNrColumns",
 # STEP 4
 #' Method Analyz.setStepItems
 #' 
-#' Method for interpret a analysis line and fill a class spot.
+#' Method for interpret an analysis line and fill a class spot.
 #' 
 #' @param object Object instance.
 #' @param index Index number of the step line to be read.
@@ -312,12 +311,9 @@ setMethod("Analyz.getStepParameters",
             vCount  <- vCount+1
             vIsType <- 1
           }
-          
         }else{ NULL }
       }  
-      
     }
-    
     return(vParameters)
   })
 
@@ -353,13 +349,11 @@ setMethod("Analyz.runAnalysis",
         error = function(e) return(e),
         warning = function(w) return(w) 
       )
-
     if(length(vResult) > 0){
       return( vResult )      
     }else{
       return(print(vInfo))
     }
-
   }
 )
 #' Method Analyz.setResult<-
@@ -367,7 +361,7 @@ setMethod("Analyz.runAnalysis",
 #' Method for storing the informed result to the "results" class spot.
 #' 
 #' @param object Object instance.
-#' @param value Result value of a execution.
+#' @param value Result value of an execution.
 #' @return object Object instance.
 #' 
 #' @export
